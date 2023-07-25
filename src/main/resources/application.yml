@@ -20,6 +20,25 @@ spring:
     activate:
       on-profile: local
 
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    # 이렇게 하면 host:3306 > docker 3306으로 간다
+    url: jdbc:mariadb://localhost:3306/pharmacy-recommendation
+    # docker 는 .env 를 참조할 거고,   local에서 할 때는 환경변수를 추가@!
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+    # redis 설정하기
+    redis:
+      host: localhost
+      port: 6379
+
+    #jpa 설정
+    jpa:
+      hibernate:
+        ddl-auto: create
+      show-sql: true
+
 ---
 spring:
   config:
