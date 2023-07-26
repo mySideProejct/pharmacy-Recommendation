@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    # tc: hostname port database 이 무시되고! 알아서 세팅을 해준다. + username /password 안쓰면 기본 세팅이 된다.
+    url: jdbc:tc:mariadb:10:///
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+kakao:
+  rest:
+    api:
+      key: ${KAKAO_REST_API_KEY}
