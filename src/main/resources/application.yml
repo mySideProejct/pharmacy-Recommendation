@@ -31,16 +31,16 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
 
-    # redis 설정하기
-    redis:
-      host: localhost
-      port: 6379
+  # redis 설정하기
+  redis:
+    host: localhost
+    port: 6379
 
-    #jpa 설정
-    jpa:
-      hibernate:
-        ddl-auto: create
-      show-sql: true
+  #jpa 설정
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
 
 ---
 spring:

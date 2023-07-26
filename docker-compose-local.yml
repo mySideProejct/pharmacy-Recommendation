@@ -24,6 +24,7 @@ services:
     # 로컬의 경로 : 도커의 디렉토리   -> 로컬 경로의 정보를 토대로 도커 디렉토리에 만듬
     volumes:
       - ./database/config:/etc/mysql/conf.d
+      - ./database/init:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306"
 
