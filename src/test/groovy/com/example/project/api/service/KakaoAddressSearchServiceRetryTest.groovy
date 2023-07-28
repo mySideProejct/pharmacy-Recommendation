@@ -8,7 +8,6 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper
 import org.testcontainers.shaded.com.google.common.net.HttpHeaders
@@ -58,9 +57,9 @@ class KakaoAddressSearchServiceRetryTest extends AbstractIntegrationContainerBas
 
         then:
         2 * kakaoUriBuilderService.buildUriByAddressSearch(inputAddress) >> uri
-        kakaoApiResult.getDocumentDtoList().size() == 1
+        kakaoApiResult.getDocumentList().size() == 1
         kakaoApiResult.getMetaDto().totalCount == 1
-        kakaoApiResult.getDocumentDtoList().get(0).getAddressName() == inputAddress
+        kakaoApiResult.getDocumentList().get(0).getAddressName() == inputAddress
 
     }
 

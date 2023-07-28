@@ -1,7 +1,6 @@
 package com.example.project.api.service
 
 import com.example.project.AbstractIntegrationContainerBaseTest
-import com.example.project.api.dto.KakaoApiResponseDto
 import org.springframework.beans.factory.annotation.Autowired
 
 
@@ -30,9 +29,9 @@ class KakaoAddressSearchServiceTest extends AbstractIntegrationContainerBaseTest
         def result = kakaoAddressSearchService.requestAddressSearch(address)
 
         then:
-        result.documentDtoList.size() > 0
+        result.documentList.size() > 0
         result.metaDto.totalCount > 0
-        result.documentDtoList.get(0).addressName != null
+        result.documentList.get(0).addressName != null
     }
 
     def "정상적인 주소를 입력했을 경우, 정상적으로 위도 경도로 변환 된다."() {
@@ -44,7 +43,7 @@ class KakaoAddressSearchServiceTest extends AbstractIntegrationContainerBaseTest
 
         then:
         if (searchResult == null) actualResult = false
-        else actualResult = searchResult.getDocumentDtoList().size() > 0
+        else actualResult = searchResult.getDocumentList().size() > 0
 
         where:
         inputAddress         | expectedResult

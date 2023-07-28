@@ -28,14 +28,15 @@ public class PharmacyRecommendationService {
         KakaoApiResponseDto kakaoApiResponseDto = kakaoAddressSearchService.requestAddressSearch(address);
 
         // 카카오 api에서 주소 입력시 값이 넘어 오지 않는다면,
-        if (Objects.isNull(kakaoApiResponseDto) || CollectionUtils.isEmpty(kakaoApiResponseDto.getDocumentDtoList())) {
+        if (Objects.isNull(kakaoApiResponseDto) || CollectionUtils.isEmpty(kakaoApiResponseDto.getDocumentList())) {
             log.error("[PharmacyRecommendationService recommendPharmacyList fail] Input address: {}", address);
             return;
         }
 
-        DocumentDto documentDto = kakaoApiResponseDto.getDocumentDtoList().get(0);
+        DocumentDto documentDto = kakaoApiResponseDto.getDocumentList().get(0);
 
-        List<Direction> directionList = directionService.buildDirectionList(documentDto);
+//        List<Direction> directionList = directionService.buildDirectionList(documentDto);
+        List<Direction> directionList = directionService.buildDirectionListByCategoryApi(documentDto);
 
         directionService.saveAll(directionList);
     }
