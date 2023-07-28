@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class FormController {
 
-    //
+    // 해당 컨트롤러를 단위 테스트 하기 위해선 의존받은 것에 대해 mocking이 필요하다.
     private final PharmacyRecommendationService pharmacyRecommendationService;
     @GetMapping("/")
     public String main() {
