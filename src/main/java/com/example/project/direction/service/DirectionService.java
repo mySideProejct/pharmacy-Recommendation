@@ -43,6 +43,7 @@ public class DirectionService {
 
 
         // 약국 데이터 조회
+        // 공공 데이터로부터 데이터 베이스를 미리 세팅하는 작업이 선행.전부 가지고 와서!
         List<PharmacyDto> pharmacyDtos = pharmacySearchService.searchPharmacyDtoList();
 
         // 거리계산 알고리즘을 이용하여, 고객과 약국 사이의 거리를 계산하고 sort
